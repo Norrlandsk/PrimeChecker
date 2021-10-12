@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeChecker", "PrimeChecker\PrimeChecker.csproj", "{0B7CA6AA-40D4-44DB-92DB-177C8E1ACB3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B7CA6AA-40D4-44DB-92DB-177C8E1ACB3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B7CA6AA-40D4-44DB-92DB-177C8E1ACB3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B7CA6AA-40D4-44DB-92DB-177C8E1ACB3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B7CA6AA-40D4-44DB-92DB-177C8E1ACB3E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D72BCDA-01BE-49C7-BC71-0A09885A98A4}
+	EndGlobalSection
+EndGlobal
