@@ -6,18 +6,12 @@
 
     class Algorithm
     {
+        public static List<long> PrimeNumberList=new List<long>();
         public static bool IsPrime(long candidate)
         {
-            var limit = Math.Ceiling(Math.Sqrt(candidate));
+            
             bool isPrime = true;
-            //Console.WriteLine($"1. Räkna ut roten av {candidate} och få fram ett gränsvärde ({limit}).\n2. Dela {candidate} med alla heltal mellan 2-{limit}\n" +
-            //        $"3. Om alla iterationer ger något annat än 0 i rest så är {candidate} ett primtal");
-            //for (int i = 2; i <= limit; i += 1)
-            //{
-            //    Console.WriteLine("iter: " + i + " rest: " + candidate % i);
-            //}
-            //int.MaxValue=2147483647
-            //2055446265
+
             if (candidate == 1) return isPrime = false;
             if (candidate == 2) return isPrime;
             if (candidate == 3) return isPrime;
@@ -29,6 +23,7 @@
             if (candidate % 11 == 0 && candidate != 11) return isPrime = false;
             if (candidate % 13 == 0 && candidate != 13) return isPrime = false;
             if (candidate % 17 == 0 && candidate != 17) return isPrime = false;
+            var limit = Math.Ceiling(Math.Sqrt(candidate));
             for (int i = 2; i <= limit; i += 1)
             {
                 if (candidate % i == 0)
@@ -38,6 +33,44 @@
 
             }
             return isPrime;
+        }
+
+        public static void AddNumberToList(long candidate)
+        {
+            if (!PrimeNumberList.Contains(candidate))
+            {
+                PrimeNumberList.Add(candidate);
+            }
+            PrimeNumberList.Sort();
+        }
+
+        public static void PrintList()
+        {
+            Console.Clear();
+            Console.WriteLine("Here are the prime numbers found so far:\n");
+            foreach (long prime in PrimeNumberList)
+            {
+                Console.WriteLine(prime+"\n");
+            }
+
+            Utils.ContinueAndClear();
+        }
+
+        public static long FindNextPrime(long previousLargestPrime)
+        {
+            bool found = false;
+            long nextPrime=0;
+
+            while (!found)
+            {
+                previousLargestPrime++;
+                if (IsPrime(previousLargestPrime))
+                {
+                    found = true;
+                }
+
+            }
+            return nextPrime;
         }
     }
 }
