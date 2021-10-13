@@ -7,11 +7,14 @@
 
     public static class Menu
     {
+        /// <summary>
+        /// The entry point of the application for the GUI as well as the backend. Controls user input and redirects program flow to the various menu choices.
+        /// It also handles and displays the information coming back from methods called in the menu choices.
+        /// </summary>
         public static void MainMenu()
         {
             bool isRunning = true;
             int option;
-            
 
             while (isRunning)
             {
@@ -27,19 +30,16 @@
                 {
                     case 1:
                         Console.Clear();
-                        Data.currentCandidate=Validator.ValidateCandidate();
+                        Data.currentCandidate = Validator.ValidateCandidate();
                         if (Data.currentCandidate > 0)
                         {
-                            
                             if (Algorithm.IsPrime(Data.currentCandidate))
                             {
                                 Console.Clear();
                                 if (!Data.IsNumberInList(Data.currentCandidate))
                                 {
-                                    
                                     Console.WriteLine($"{Data.currentCandidate} is a prime number! \nIt is added to the Prime Number List.");
                                     Data.AddNumberToList(Data.currentCandidate);
-                                    
                                 }
                                 else
                                 {
@@ -55,44 +55,41 @@
                         }
 
                         break;
+
                     case 2:
                         Console.Clear();
                         Data.PrintList();
                         Utils.ContinueAndClear();
                         break;
+
                     case 3:
                         Console.Clear();
                         if (Data.PrimeNumberList.Count > 0)
                         {
-                            
                             long previousLargestPrime = Data.PrimeNumberList.Last();
                             long currentLargestPrime = Algorithm.FindNextPrime(previousLargestPrime);
-                            Console.WriteLine($"The previous largest prime is {previousLargestPrime}...");
+                            Console.Clear();
+                            Console.WriteLine($"The previous largest prime is {previousLargestPrime}.");
                             Console.WriteLine($"Next prime number is {currentLargestPrime}.\nIt is added to the Prime Number List");
                             Data.AddNumberToList(currentLargestPrime);
                         }
                         else
                         {
                             Console.WriteLine("There appears to be no previous prime numbers in the Prime Number List");
-                            
                         }
                         Utils.ContinueAndClear();
                         break;
+
                     case 4:
                         Console.Clear();
                         isRunning = false;
                         Console.WriteLine("Quitting application...");
                         break;
+
                     default:
                         break;
                 }
-
-                
-
-
-              
             }
-
         }
     }
 }

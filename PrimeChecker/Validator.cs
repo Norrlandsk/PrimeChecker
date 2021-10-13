@@ -7,8 +7,17 @@
     using System.Text;
     using System.Threading;
 
+    /// <summary>
+    /// Validates correct data for algorithm.
+    /// </summary>
     public static class Validator
     {
+        /// <summary>
+        /// Validates correct input for algorithm with Int64.Parse(). Catches exceptions and notifies user.
+        /// User is prompted for input until all criteria are met, i.e. integers between 1 and int64.MaxValue.
+        /// If invalid user input is received 5 times, the user is notified of criteria. Returns long candidate.
+        /// </summary>
+        /// <returns>long candidate</returns>
         public static long ValidateCandidate()
         {
             long candidate = 0;
@@ -23,7 +32,8 @@
                 Console.Write("Enter a candidate (press Enter to go back to main menu): ");
                 string candidateString = Console.ReadLine();
 
-                if (candidateString == "") {
+                if (candidateString == "")
+                {
                     Console.Clear();
                     break;
                 }
@@ -52,8 +62,8 @@
                 {
                     Console.Clear();
                     Console.WriteLine("Candidate was out of range!");
-                        Thread.Sleep(1750);
-                        Console.Clear();
+                    Thread.Sleep(1750);
+                    Console.Clear();
                     isExceptionTriggered = true;
                 }
 
@@ -63,9 +73,8 @@
                     Console.WriteLine("Candidate must be above zero!");
                     Thread.Sleep(1750);
                     Console.Clear();
-                    
                 }
-                else if (candidate >=minVal)
+                else if (candidate >= minVal)
                 {
                     isValid = true;
                 }
@@ -83,11 +92,8 @@
                     Utils.ContinueAndClear();
                     tryCount = 0;
                 }
-                
-
             }
             return candidate;
         }
-
     }
 }

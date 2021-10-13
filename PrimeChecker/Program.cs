@@ -2,9 +2,12 @@
 {
     using System;
 
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Entry point of application. Prints the Main Menu.
+        /// </summary>
+        private static void Main()
         {
             Menu.MainMenu();
         }
