@@ -15,7 +15,6 @@
 
             while (isRunning)
             {
-                long currentCandidate = 0;
                 Console.WriteLine("Choose option \n");
                 Console.WriteLine("[1] Check primality of number");
                 Console.WriteLine("[2] Print Prime Number List");
@@ -27,50 +26,60 @@
                 switch (option)
                 {
                     case 1:
-                        currentCandidate=Validator.ValidateCandidate();
-                        if (currentCandidate > 0)
+                        Console.Clear();
+                        Data.currentCandidate=Validator.ValidateCandidate();
+                        if (Data.currentCandidate > 0)
                         {
-                            if(Algorithm.IsPrime(currentCandidate))
+                            
+                            if (Algorithm.IsPrime(Data.currentCandidate))
                             {
                                 Console.Clear();
-                                Console.WriteLine($"{currentCandidate} is a prime number! \nIt is added to the Prime Number List.");
-                                Algorithm.AddNumberToList(currentCandidate);
-                                Utils.ContinueAndClear();
+                                if (!Data.IsNumberInList(Data.currentCandidate))
+                                {
+                                    
+                                    Console.WriteLine($"{Data.currentCandidate} is a prime number! \nIt is added to the Prime Number List.");
+                                    Data.AddNumberToList(Data.currentCandidate);
+                                    
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{Data.currentCandidate} is a prime number! \nIt is already present in the Prime Number List.");
+                                }
                             }
                             else
                             {
                                 Console.Clear();
-                                Console.WriteLine($"{currentCandidate} is not a prime number.");
-                                Utils.ContinueAndClear();
+                                Console.WriteLine($"{Data.currentCandidate} is not a prime number.");
                             }
+                            Utils.ContinueAndClear();
                         }
+
                         break;
                     case 2:
                         Console.Clear();
-                        Algorithm.PrintList();
+                        Data.PrintList();
                         Utils.ContinueAndClear();
                         break;
                     case 3:
-                        if (Algorithm.PrimeNumberList.Count > 0)
+                        Console.Clear();
+                        if (Data.PrimeNumberList.Count > 0)
                         {
-                            Console.Clear();
-                            long previousLargestPrime = Algorithm.PrimeNumberList.Last();
+                            
+                            long previousLargestPrime = Data.PrimeNumberList.Last();
                             long currentLargestPrime = Algorithm.FindNextPrime(previousLargestPrime);
                             Console.WriteLine($"The previous largest prime is {previousLargestPrime}...");
                             Console.WriteLine($"Next prime number is {currentLargestPrime}.\nIt is added to the Prime Number List");
-                            Algorithm.AddNumberToList(currentLargestPrime);
-                            Utils.ContinueAndClear();
+                            Data.AddNumberToList(currentLargestPrime);
                         }
                         else
                         {
-                            Console.Clear();
                             Console.WriteLine("There appears to be no previous prime numbers in the Prime Number List");
-                            Utils.ContinueAndClear();
+                            
                         }
-                        
-
+                        Utils.ContinueAndClear();
                         break;
                     case 4:
+                        Console.Clear();
                         isRunning = false;
                         Console.WriteLine("Quitting application...");
                         break;

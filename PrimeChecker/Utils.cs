@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading;
 
     class Utils
     {
@@ -25,7 +26,11 @@
                 }
                 else
                 {
+                    Console.Clear();
                     Console.Write("Invalid input!");
+                    Thread.Sleep(1250);
+                    Console.Clear();
+                    break;
                 }
             } while (true);
             return confirmedChoice;
