@@ -32,25 +32,40 @@
                         {
                             if(Algorithm.IsPrime(currentCandidate))
                             {
-                                Console.WriteLine($"{currentCandidate} is a prime number! \nIt is added to the Prime Number List");
+                                Console.Clear();
+                                Console.WriteLine($"{currentCandidate} is a prime number! \nIt is added to the Prime Number List.");
                                 Algorithm.AddNumberToList(currentCandidate);
+                                Utils.ContinueAndClear();
                             }
                             else
                             {
-                                Console.WriteLine($"{currentCandidate} is not a prime number!");
+                                Console.Clear();
+                                Console.WriteLine($"{currentCandidate} is not a prime number.");
+                                Utils.ContinueAndClear();
                             }
                         }
                         break;
                     case 2:
+                        Console.Clear();
                         Algorithm.PrintList();
+                        Utils.ContinueAndClear();
                         break;
                     case 3:
                         if (Algorithm.PrimeNumberList.Count > 0)
                         {
+                            Console.Clear();
                             long previousLargestPrime = Algorithm.PrimeNumberList.Last();
                             long currentLargestPrime = Algorithm.FindNextPrime(previousLargestPrime);
+                            Console.WriteLine($"The previous largest prime is {previousLargestPrime}...");
                             Console.WriteLine($"Next prime number is {currentLargestPrime}.\nIt is added to the Prime Number List");
                             Algorithm.AddNumberToList(currentLargestPrime);
+                            Utils.ContinueAndClear();
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("There appears to be no previous prime numbers in the Prime Number List");
+                            Utils.ContinueAndClear();
                         }
                         
 

@@ -34,6 +34,7 @@
                 }
                 catch (FormatException)
                 {
+                    Console.Clear();
                     Console.WriteLine("Incorrect input format!");
                     Thread.Sleep(1750);
                     Console.Clear();
@@ -41,6 +42,7 @@
                 }
                 catch (ArgumentNullException)
                 {
+                    Console.Clear();
                     Console.WriteLine("Input was null!");
                     Thread.Sleep(1750);
                     Console.Clear();
@@ -48,7 +50,8 @@
                 }
                 catch (OverflowException)
                 {
-                        Console.WriteLine("Candidate was out of range!");
+                    Console.Clear();
+                    Console.WriteLine("Candidate was out of range!");
                         Thread.Sleep(1750);
                         Console.Clear();
                     isExceptionTriggered = true;
@@ -56,7 +59,7 @@
 
                 if (candidate < minVal && !isExceptionTriggered)
                 {
-                    
+                    Console.Clear();
                     Console.WriteLine("Candidate must be above zero!");
                     Thread.Sleep(1750);
                     Console.Clear();
@@ -77,9 +80,7 @@
                     Console.WriteLine("Must be above zero");
                     Console.WriteLine("Must be below 9223372036854775808");
                     Console.WriteLine("Cannot contain decimals\n");
-                    Console.WriteLine("Please try again");
-                    Console.ReadLine();
-                    Console.Clear();
+                    Utils.ContinueAndClear();
                     tryCount = 0;
                 }
                 

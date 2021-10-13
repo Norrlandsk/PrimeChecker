@@ -6,6 +6,7 @@
 
     class Algorithm
     {
+        public static long currentPrime;
         public static List<long> PrimeNumberList=new List<long>();
         public static bool IsPrime(long candidate)
         {
@@ -24,13 +25,16 @@
             if (candidate % 13 == 0 && candidate != 13) return isPrime = false;
             if (candidate % 17 == 0 && candidate != 17) return isPrime = false;
             var limit = Math.Ceiling(Math.Sqrt(candidate));
-            for (int i = 2; i <= limit; i += 1)
+            for (int i = 5; i <= limit; i += 2)
             {
                 if (candidate % i == 0)
                 {
                     isPrime = false;
                 }
-
+            }
+            if (isPrime)
+            {
+                currentPrime = candidate;
             }
             return isPrime;
         }
@@ -46,14 +50,19 @@
 
         public static void PrintList()
         {
-            Console.Clear();
-            Console.WriteLine("Here are the prime numbers found so far:\n");
-            foreach (long prime in PrimeNumberList)
+            if (PrimeNumberList.Count > 0)
             {
-                Console.WriteLine(prime+"\n");
+                Console.WriteLine("Here are the prime numbers found so far:\n");
+                foreach (long prime in PrimeNumberList)
+                {
+                    Console.WriteLine(prime + "\n");
+                }
             }
-
-            Utils.ContinueAndClear();
+            else
+            {
+                Console.WriteLine("The Prime Number List is empty");
+            }
+            
         }
 
         public static long FindNextPrime(long previousLargestPrime)
@@ -66,6 +75,7 @@
                 previousLargestPrime++;
                 if (IsPrime(previousLargestPrime))
                 {
+                    nextPrime = currentPrime;
                     found = true;
                 }
 
